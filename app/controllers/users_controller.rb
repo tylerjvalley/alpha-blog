@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.fing(params[:id])
+    @user = User.find(params[:id])
     @user.destroy
     flash[:danger] = "User and all articles created by user have been deleted"
     redirect_to users_path
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     if logged_in? and !current_user.admin?
       flash[:danger] = "Only admin users can do this"
       redirect_to root_path
-    end 
+    end
   end
 
 end
